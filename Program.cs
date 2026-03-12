@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 ///Register Razor Pages
 builder.Services.AddRazorPages();
+builder.Services.AddControllers();
 
 builder.Services.AddHttpClient<IProductRepository, ProductRepository>(client =>
 {
@@ -29,6 +30,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
+app.MapControllers();
 app.MapRazorPages();
 
 //Start the applicaton and begin listening for requests
