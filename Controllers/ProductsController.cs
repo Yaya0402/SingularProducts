@@ -31,6 +31,11 @@ namespace SingularProducts.Controllers
             }
 
             var summary = await _productService.GetProductSalesSummary(id);
+
+            if (summary == null)
+            {
+                return NotFound($"Product with ID {id} was not found. ");
+            }
             return Ok(summary);
         }
     }

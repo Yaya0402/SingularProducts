@@ -21,6 +21,11 @@ namespace SingularProducts.Services
         {
             var sales = await _productRepository.GetProductSales(productId);
 
+            if (sales == null || !sales.Any())
+            {
+                return null;
+            }
+
             return new ProductSalesSummary
             {
                 ProductId = productId,
